@@ -21,16 +21,16 @@ $('document').ready(function () {
         $('#btnSubmit').removeAttr('disabled'); // remove disabled button if input value is detected
     });
 
-    // found this function on stack overflow
-    // $input.keyup(function () {
-    //     var trigger = false;
-    //     $input.each(function () {
-    //         if (!$(this).val()) {
-    //             trigger = true;
-    //         }
-    //     });
-    //     trigger ? $btn.attr('disabled', true) : $btn.removeAttr('disabled');
-    // });
+    // $( "div h2" ).on( "mouseenter", cssHandlerOver ).on( "mouseleave", cssHandlerOut );
+
+    $('div').on("mouseover", h2UpdateHover);
+
+    function h2UpdateHover(e) {
+        var el = e.target;
+        if(el.tagName == "H2") {
+            $(el).css("background-color", "red").css("border-radius", "5rem");
+        }
+    }
 
 
 
