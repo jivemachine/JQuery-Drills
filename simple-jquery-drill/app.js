@@ -37,5 +37,24 @@ $('document').ready(function () {
     $('body').append(ul);
 
 
+    $('ul').on("click", liChangeColor);
+
+    function liChangeColor(e) {
+        var el = e.target;
+        if (el.tagName == "LI") {
+            $(el).css("color", randomColor);
+        }
+    };
+
+    function randomColor() {
+        let colorArray = ['red', 'yellow', 'blue', 'purple', 'green', 'goldenrod', 'black', 'seafoam'];
+        let max = 7;
+
+        let choice = Math.floor(Math.random() * max);
+        let color = colorArray[choice];
+        return color;
+    }
+
+
 
 });
