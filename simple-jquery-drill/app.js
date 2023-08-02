@@ -1,7 +1,9 @@
-$('document').ready(function() {
+$( 'document' ).ready(function() {
 
-    $('#btnSubmit').click(function() {
-        alert("This button has been clicked!");
+    $( '#btnSubmit' ).on( "click", function() {
+        
+        var el = $('input[type*="text"]').val() ;
+        alert(el);
     });
     
 });
