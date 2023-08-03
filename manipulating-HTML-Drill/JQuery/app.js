@@ -71,3 +71,6 @@ function colorChng() {
 
     $(this).css('color', color);
 }
+
+// numbering fifth task
+$('body').append('<h3># 5</h1>');
