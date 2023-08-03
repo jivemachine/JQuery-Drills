@@ -27,3 +27,6 @@ function alertF() {
     let element = $('.input2');
     alert(element.val());
 }
+
+// numbering third task
+$('body').append('<h3># 3</h3>');
