@@ -119,3 +119,10 @@ document.addEventListener('click', function(e) {
         document.getElementsByClassName('div5')[0].append(span);
     }
 });
+
+// numbering sixth task
+let six = document.createElement('h3');
+let sixTxt = document.createTextNode('# 6');
+six.append(sixTxt);
+
+document.body.append(six);
