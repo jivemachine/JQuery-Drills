@@ -92,3 +92,22 @@ function addSpan() {
 
 // numbering sixth task
 $('body').append('<h3># 6</h1>');
+
+// sixth task
+let btn6 = "<button>submit</button>";
+let ul = "<ul></ul>";
+$('body').append(btn6);
+$('body').append(ul);
+
+$('button:last').addClass('btn6');
+$('ul:last').addClass('ul6');
+
+$('.btn6').on('click', listFriends);
+
+function listFriends() {
+    let friendsArray = ['Eder', 'Kerryington', 'Matt', 'Greg', 'Cody', 'Daniel', 'Jasmine', 'Daniella', 'Ella', 'Arthur'];
+    for(i = 0; i < friendsArray.length; i++) {
+        let li6 = "<li>" + friendsArray[i] + "</li>"
+        $('.ul6').append(li6);
+    }
+}
