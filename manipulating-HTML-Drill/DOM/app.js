@@ -126,3 +126,31 @@ let sixTxt = document.createTextNode('# 6');
 six.append(sixTxt);
 
 document.body.append(six);
+
+// sixth task 
+let btn6 = document.createElement('button')
+let btn6Txt = document.createTextNode('submit');
+btn6.className = "btn6";
+
+btn6.append(btn6Txt);
+document.body.append(btn6);
+
+let ul = document.createElement('ul');
+document.body.append(ul);
+
+let friendsArray = ['Eder', 'Kerryington', 'Matt', 'Greg', 'Cody', 'Daniel', 'Jasmine', 'Daniella', 'Ella', 'Arthur'];
+
+document.addEventListener('click', function(e) {
+    if(e.target.className === "btn6") {
+        let el = document.getElementsByTagName('ul');
+        
+        for(var i = 0; i < friendsArray.length; i++) {
+            let li = document.createElement('li');
+            let liText = document.createTextNode(friendsArray[i]);
+            li.append(liText);
+
+            el[0].appendChild(li);
+        }
+    }
+
+})
