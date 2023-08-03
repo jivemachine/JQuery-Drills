@@ -54,3 +54,20 @@ function changeBgBack() {
 
 // numbering fourth task
 $('body').append('<h3># 4</h1>');
+
+// fouth task
+let p = "<p></p>";
+$('body').append(p);
+$('p:last').addClass('p4');
+$('.p4').append("some text")
+
+$('.p4').on('click', colorChng);
+
+function colorChng() {
+    let colorArray = ['orange', 'blue', 'purple', 'pink'];
+    let max = 3;
+    let choice = Math.floor(Math.random() * max);
+    let color = colorArray[choice];
+
+    $(this).css('color', color);
+}
