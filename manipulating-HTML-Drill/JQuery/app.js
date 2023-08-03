@@ -30,3 +30,24 @@ function alertF() {
 
 // numbering third task
 $('body').append('<h3># 3</h3>');
+
+// third task
+let $div = "<div></div>";
+$('body').append($div);
+$('div:last').addClass('div3');
+$('.div3').css({
+    'background-color': 'black',
+    'height': '50px',
+    'width': '50px',
+});
+
+$('.div3').on('mouseenter', changeBg);
+$('.div3').on('mouseleave', changeBgBack);
+
+function changeBg() {
+    $(this).css('background-color', 'blue');
+}
+
+function changeBgBack() {
+    $(this).css('background-color', 'black');
+}
