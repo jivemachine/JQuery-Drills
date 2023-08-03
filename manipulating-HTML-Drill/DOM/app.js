@@ -90,3 +90,10 @@ function randomColor() {
     let color = colorArray[choice];
     return color;
 }
+
+// numbering fifth task
+let five = document.createElement('h3');
+let fiveTxt = document.createTextNode('# 5');
+five.append(fiveTxt);
+
+document.body.append(five);
