@@ -60,3 +60,33 @@ document.addEventListener('mouseout', function(e) {
         e.target.style.backgroundColor = "black";
     }
 });
+
+// numbering fourth task
+let four = document.createElement('h3');
+let fourTxt = document.createTextNode('# 4');
+four.append(fourTxt);
+
+document.body.append(four);
+
+// fourth task
+let p = document.createElement('p');
+let pTxt = document.createTextNode('Lorem ipsum');
+p.append(pTxt);
+
+document.body.append(p);
+
+document.addEventListener('click', function(e) {
+    if(e.target.tagName === "P") {
+        e.target.style.color = randomColor();
+    }
+});
+
+function randomColor() {
+    let colorArray = ['aqua', 'orange', 'blue', 'purple', 'pink'];
+    let max = 4;
+
+    let choice = Math.floor(Math.random() * max);
+
+    let color = colorArray[choice];
+    return color;
+}
