@@ -11,3 +11,6 @@ $('button').attr('class', 'btn1');
 $('.btn1').on('click', function(e) {
     alert("hi friend :)");
 });
+
+// numbering second task
+$('body').append('<h3># 2</h3>');
