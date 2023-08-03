@@ -51,3 +51,6 @@ function changeBg() {
 function changeBgBack() {
     $(this).css('background-color', 'black');
 }
+
+// numbering fourth task
+$('body').append('<h3># 4</h1>');
