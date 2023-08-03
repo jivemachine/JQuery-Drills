@@ -74,3 +74,18 @@ function colorChng() {
 
 // numbering fifth task
 $('body').append('<h3># 5</h1>');
+
+// fifth task
+let btn5 = "<button>Submit</button>";
+let div5 = "<div></div>";
+$('body').append(btn5);
+$('body').append(div5);
+$('button:last').addClass('btn5');
+$('div:last').addClass('div5');
+
+$('.btn5').on('click', addSpan);
+
+function addSpan() {
+    let span = "<span>Jeremy</span>";
+    $('.div5').append(span);
+}
