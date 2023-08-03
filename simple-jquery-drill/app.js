@@ -55,6 +55,12 @@ $('document').ready(function () {
         return color;
     }
 
+    $('ul').on('dblclick', removeLi);
 
-
+    function removeLi(e) {
+        var el = e.target;
+        if(el.tagName == "LI") {
+            $(el).remove();
+        }
+    };
 });
