@@ -89,3 +89,6 @@ function addSpan() {
     let span = "<span>Jeremy</span>";
     $('.div5').append(span);
 }
+
+// numbering sixth task
+$('body').append('<h3># 6</h1>');
