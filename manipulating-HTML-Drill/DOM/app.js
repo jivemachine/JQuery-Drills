@@ -97,3 +97,25 @@ let fiveTxt = document.createTextNode('# 5');
 five.append(fiveTxt);
 
 document.body.append(five);
+
+// fifth task
+let btn5 = document.createElement('button');
+let btn5Txt = document.createTextNode('add span to div');
+btn5.append(btn5Txt);
+btn5.className = "btn5";
+document.body.append(btn5);
+
+let div5 = document.createElement('div');
+div5.className = "div5";
+document.body.append(div5);
+
+document.addEventListener('click', function(e) {
+    if(e.target.className === "btn5") {
+        let element = document.getElementsByClassName('div5');
+        let span = document.createElement('span');
+        let spanTxt = document.createTextNode('Jeremy');
+        span.appendChild(spanTxt);
+
+        document.getElementsByClassName('div5')[0].append(span);
+    }
+});
