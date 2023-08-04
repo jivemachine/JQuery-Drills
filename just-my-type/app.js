@@ -32,36 +32,35 @@ $(document).keypress(function (e) {
 });
 
 // display sentences at top of page one sentence at a time
-// count control which sentence will display at tope of screen
-let sentenceCount = 0;
-let letterCount = 0;
-let sentences = ['ten ate neite ate nee enet ite ate inet ent eate', 'Too ato too nOt enot one totA not anot tOO aNot', 'oat itain oat tain nate eate tea anne inant nean', 'itant eate anot eat nato inate eat anot tain eat', 'nee ene ate ite tent tiet ent ine ene ete ene ate'];
-$('#sentence').append(sentences[sentenceCount]);
+// count control which sentence will display at top of screen
+sentenceCount = 0;
+letterCount = 0;
+sentences = ['ten ate neite ate nee enet ite ate inet ent eate', 'Too ato too nOt enot one totA not anot tOO aNot', 'oat itain oat tain nate eate tea anne inant nean', 'itant eate anot eat nato inate eat anot tain eat', 'nee ene ate ite tent tiet ent ine ene ete ene ate'];
+$('#sentence').text(sentences[sentenceCount]);
 
-// displays expected letter in target-letter div
+// displays expected letter of first sentence in #target-letter div
 $('#target-letter').text(sentences[sentenceCount][letterCount]);
 
-// match key pressed to text in sentence
-// correct input = green css check below letter
-// incorrect input = red x below letter
+// most of whats going on is in this keypress event listener
 $(document).keypress(function (e) {
-    let letter = sentences[sentenceCount][letterCount];
-    let letterCode = letter.charCodeAt();
+    letter = sentences[sentenceCount][letterCount];
+    letterCode = letter.charCodeAt();
     key = e.keyCode;
 
+    // if match display green check in the .feedback div
+    // else display red x in the .feedback div
     if (letterCode == key) {
+        $('.feedback').append()
         console.log("match");
         letterCount++;
     } else {
         console.log('no fucking match');
-        console.log(letterCode);
-        console.log(key);
         letterCount++;
     }
 
     // highlight next letter in sentence
-    if(letterCount < 18) {
-        mover = 18 * (1+letterCount);
+    if (letterCount < 18) {
+        mover = 18 * (1 + letterCount);
     } else {
         mover = 18 * letterCount;
     }
@@ -71,4 +70,16 @@ $(document).keypress(function (e) {
     // display next letter in sentence in target-letter
     expected = sentences[sentenceCount][letterCount];
     $('#target-letter').text(expected);
+
+    sentenceLength = sentences[sentenceCount].length;
+    // if sentenceLength = lettCount move to next sentence 
+    // reset letterCount & reset yellow-block
+    if (sentenceLength === letterCount) {
+        sentenceCount++;
+        letterCount = 0;
+        $('#sentence').text(sentences[sentenceCount]);
+        $('#target-letter').text(sentences[sentenceCount][letterCount]);
+        $('#yellow-block').css('left', '10px');
+        sentenceLength = sentences[sentenceCount].length - 1;
+    }
 });
