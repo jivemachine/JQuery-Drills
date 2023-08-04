@@ -38,6 +38,9 @@ let letterCount = 0;
 let sentences = ['ten ate neite ate nee enet ite ate inet ent eate', 'Too ato too nOt enot one totA not anot tOO aNot', 'oat itain oat tain nate eate tea anne inant nean', 'itant eate anot eat nato inate eat anot tain eat', 'nee ene ate ite tent tiet ent ine ene ete ene ate'];
 $('#sentence').append(sentences[sentenceCount]);
 
+// displays expected letter in target-letter div
+$('#target-letter').text(sentences[sentenceCount][letterCount]);
+
 // match key pressed to text in sentence
 // correct input = green css check below letter
 // incorrect input = red x below letter
@@ -64,7 +67,8 @@ $(document).keypress(function (e) {
     }
     let $pixels = (mover) + 'px';
     $('#yellow-block').css('left', $pixels);
+
+    // display next letter in sentence in target-letter
+    expected = sentences[sentenceCount][letterCount];
+    $('#target-letter').text(expected);
 });
-
-
-
