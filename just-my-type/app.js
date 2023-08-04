@@ -39,11 +39,13 @@ let sentences = ['ten ate neite ate nee enet ite ate inet ent eate', 'Too ato to
 $('#sentence').append(sentences[sentenceCount]);
 
 // match key pressed to text in sentence
+// correct input = green css check below letter
+// incorrect input = red x below letter
 $(document).keypress(function (e) {
     let letter = sentences[sentenceCount][letterCount];
     let letterCode = letter.charCodeAt();
     key = e.keyCode;
-    
+
     if (letterCode == key) {
         console.log("match");
         letterCount++;
@@ -54,8 +56,14 @@ $(document).keypress(function (e) {
         letterCount++;
     }
 
-    // console.log(key);
-    // console.log(letterCode);
+    // highlight next letter in sentence
+    if(letterCount < 18) {
+        mover = 18 * (1+letterCount);
+    } else {
+        mover = 18 * letterCount;
+    }
+    let $pixels = (mover) + 'px';
+    $('#yellow-block').css('left', $pixels);
 });
 
 
