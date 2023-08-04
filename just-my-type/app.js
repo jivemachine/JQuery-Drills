@@ -50,11 +50,11 @@ $(document).keypress(function (e) {
     // if match display green check in the .feedback div
     // else display red x in the .feedback div
     if (letterCode == key) {
-        $('.feedback').append()
-        console.log("match");
+        feedback = $('')
+        $('#feedback').append('<span class="glyphicon glyphicon-ok"></span>');
         letterCount++;
     } else {
-        console.log('no fucking match');
+        $('#feedback').append('<span class="glyphicon glyphicon-remove"></span>');
         letterCount++;
     }
 
@@ -73,13 +73,18 @@ $(document).keypress(function (e) {
 
     sentenceLength = sentences[sentenceCount].length;
     // if sentenceLength = lettCount move to next sentence 
-    // reset letterCount & reset yellow-block
+    // reset letterCount & reset yellow-block & feedback glyphicons
     if (sentenceLength === letterCount) {
         sentenceCount++;
         letterCount = 0;
         $('#sentence').text(sentences[sentenceCount]);
         $('#target-letter').text(sentences[sentenceCount][letterCount]);
         $('#yellow-block').css('left', '10px');
+        $('.glyphicon-remove').remove();
+        $('.glyphicon-ok').remove();
         sentenceLength = sentences[sentenceCount].length - 1;
     }
+
+
+    // if correct lett
 });
