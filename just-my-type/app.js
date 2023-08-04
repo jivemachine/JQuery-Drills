@@ -35,14 +35,38 @@ $(document).keypress(function (e) {
 // count control which sentence will display at top of screen
 sentenceCount = 0;
 letterCount = 0;
+numberOfMistakes = 0;
+cnt = 0;
 sentences = ['ten ate neite ate nee enet ite ate inet ent eate', 'Too ato too nOt enot one totA not anot tOO aNot', 'oat itain oat tain nate eate tea anne inant nean', 'itant eate anot eat nato inate eat anot tain eat', 'nee ene ate ite tent tiet ent ine ene ete ene ate'];
+Words = sentences.toString();
+punctuationless = Words.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, " ");
+numberOfWords = countWords(punctuationless);
 $('#sentence').text(sentences[sentenceCount]);
+
+// count words function
+function countWords(str) {
+    return str.trim().split(/\s+/).length;
+}
+
+// function converts ms to 4:30 format using minutes and seconds
+function millisToMinutesAndSeconds(millis) {
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + "." + (seconds < 10 ? '0' : '') + seconds;
+}
 
 // displays expected letter of first sentence in #target-letter div
 $('#target-letter').text(sentences[sentenceCount][letterCount]);
 
 // most of whats going on is in this keypress event listener
 $(document).keypress(function (e) {
+    if (cnt === 0) {
+        start = new Date();
+        cnt++;
+        console.log(start);
+    }
+
+    rounds = sentences.length;
     letter = sentences[sentenceCount][letterCount];
     letterCode = letter.charCodeAt();
     key = e.keyCode;
@@ -56,6 +80,7 @@ $(document).keypress(function (e) {
     } else {
         $('#feedback').append('<span class="glyphicon glyphicon-remove"></span>');
         letterCount++;
+        numberOfMistakes++;
     }
 
     // highlight next letter in sentence
@@ -74,17 +99,32 @@ $(document).keypress(function (e) {
     sentenceLength = sentences[sentenceCount].length;
     // if sentenceLength = lettCount move to next sentence 
     // reset letterCount & reset yellow-block & feedback glyphicons
+    // and display WPM at end of round
     if (sentenceLength === letterCount) {
-        sentenceCount++;
-        letterCount = 0;
-        $('#sentence').text(sentences[sentenceCount]);
-        $('#target-letter').text(sentences[sentenceCount][letterCount]);
-        $('#yellow-block').css('left', '10px');
-        $('.glyphicon-remove').remove();
-        $('.glyphicon-ok').remove();
-        sentenceLength = sentences[sentenceCount].length - 1;
+        // at end of all 5 rounds display users score
+        // then give an option to begin again or not
+        if (sentenceCount == 4 && letterCount == 49) {
+            // difference in time from start to finish
+            elapsed = new Date() - start;
+            minutes = millisToMinutesAndSeconds(elapsed);
+            wpm = numberOfWords / minutes - 2 * numberOfMistakes;
+            console.log(wpm);
+            alert("Your Words Per Minute: " + wpm.toFixed(2));
+            text = "Would you like to play again?";
+            if (confirm(text) == true) {
+                location.reload(true);
+            } else {
+                // nothing
+            }
+        } else {
+            sentenceCount++;
+            letterCount = 0;
+            $('#sentence').text(sentences[sentenceCount]);
+            $('#target-letter').text(sentences[sentenceCount][letterCount]);
+            $('#yellow-block').css('left', '10px');
+            $('.glyphicon-remove').remove();
+            $('.glyphicon-ok').remove();
+            sentenceLength = sentences[sentenceCount].length - 1;
+        }
     }
-
-
-    // if correct lett
 });
